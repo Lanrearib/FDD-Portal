@@ -33,16 +33,16 @@ const toneIcon = {
   neutral: "bg-sunken text-ink-2",
 };
 const stripTone: Partial<Record<NextAction["tone"], string>> = {
-  bad: "from-bad-soft/70 via-peach-soft/40",
-  action: "from-peach-soft/90 via-peach-soft/30",
-  info: "from-info-soft/80 via-info-soft/20",
+  bad: "bg-bad-soft/60",
+  action: "bg-peach-soft/70",
+  info: "bg-info-soft/60",
 };
 
 function NextActionCard({ next }: { next: NextAction }) {
   const Icon = actionIcons[next.primary.icon];
   return (
     <Card className="animate-rise mt-7 overflow-hidden">
-      <div className={clsx("border-b border-line/80 bg-gradient-to-r to-transparent px-5 py-3 sm:px-6", stripTone[next.tone] ?? "from-sunken")}>
+      <div className={clsx("border-b border-line/80 px-5 py-3 sm:px-6", stripTone[next.tone] ?? "bg-sunken/60")}>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <StatusPill tone={next.tone}>{next.status}</StatusPill>
           {next.due && (

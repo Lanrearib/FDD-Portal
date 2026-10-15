@@ -57,9 +57,6 @@ const faqs = [
 function HeroVisual() {
   return (
     <div className="relative mx-auto w-full max-w-[520px] lg:mx-0">
-      {/* Soft iridescent field behind the card */}
-      <div aria-hidden className="iris absolute -top-10 -right-6 size-72 rounded-full opacity-50 blur-3xl" />
-      <div aria-hidden className="absolute -bottom-8 -left-10 size-56 rounded-full bg-peach/30 blur-3xl" />
 
       <Card className="relative p-6 sm:p-7">
         <JourneyPath stages={heroStages} title="Your journey" />
@@ -78,7 +75,7 @@ function HeroVisual() {
 function PhotoSlot({ label, className }: { label: string; className?: string }) {
   return (
     <figure
-      className={`relative overflow-hidden rounded-panel bg-gradient-to-br from-[#efe4dc] via-[#f3ebe6] to-[#e7e2f3] ${className ?? ""}`}
+      className={`relative overflow-hidden rounded-panel bg-sunken ${className ?? ""}`}
     >
       <RingsMark size={160} className="absolute -right-8 -bottom-10 opacity-[0.07]" />
       <figcaption className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-surface/80 px-2.5 py-1 text-[12px] text-ink-2 backdrop-blur">

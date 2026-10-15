@@ -116,19 +116,6 @@ body {
   background: var(--color-peach-soft);
 }
 
-/* The iridescent mark used on the landing hero and empty states. */
-.iris {
-  background: conic-gradient(
-    from 210deg,
-    #f6b49b,
-    #c7b6f0,
-    #f3d2c3,
-    #ee9677,
-    #b9a8ec,
-    #f6b49b
-  );
-}
-
 /* A thin scrollbar for side panels */
 .scroll-thin {
   scrollbar-width: thin;

@@ -53,15 +53,15 @@ function PanelCard({
   children: ReactNode;
 }) {
   const strip: Partial<Record<Tone, string>> = {
-    action: "from-peach-soft/80",
-    bad: "from-bad-soft/70",
-    wait: "from-wait-soft/80",
-    info: "from-info-soft/80",
-    ok: "from-ok-soft/80",
+    action: "bg-peach-soft/70",
+    bad: "bg-bad-soft/60",
+    wait: "bg-wait-soft/70",
+    info: "bg-info-soft/60",
+    ok: "bg-ok-soft/60",
   };
   return (
     <Card className="animate-rise mt-7 overflow-hidden">
-      <div className={clsx("flex flex-wrap items-center justify-between gap-2 border-b border-line/80 bg-gradient-to-r to-transparent px-5 py-3 sm:px-6", strip[tone] ?? "from-sunken")}>
+      <div className={clsx("flex flex-wrap items-center justify-between gap-2 border-b border-line/80 px-5 py-3 sm:px-6", strip[tone] ?? "bg-sunken/60")}>
         <StatusPill tone={tone}>{status}</StatusPill>
         {meta && <p className="text-[12.5px] text-ink-2">{meta}</p>}
       </div>
@@ -204,8 +204,8 @@ function DocThumb({ kind, label }: { kind: "letter" | "card"; label: string }) {
             </svg>
           </div>
         ) : (
-          <div className="absolute inset-0 flex gap-[6%] bg-gradient-to-br from-[#e8f0ea] to-[#dfe7f3] p-[7%]">
-            <div className="h-full w-[30%] rounded-[6px] bg-gradient-to-b from-[#c9b8a8] to-[#9d8676]" />
+          <div className="absolute inset-0 flex gap-[6%] bg-[#e6ece9] p-[7%]">
+            <div className="h-full w-[30%] rounded-[6px] bg-[#b19c8c]" />
             <div className="flex-1 space-y-[9%] pt-[4%]">
               {[80, 60, 90, 50, 70].map((w, i) => (
                 <div key={i} className="h-[7%] rounded-full bg-ink/25" style={{ width: `${w}%` }} />

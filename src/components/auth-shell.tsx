@@ -45,7 +45,7 @@ export function AuthShell({
       </div>
       {aside && (
         <aside className="sticky top-0 hidden h-dvh w-[44%] max-w-[620px] shrink-0 p-4 lg:block">
-          <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-[28px] bg-gradient-to-br from-[#ebe7e3] via-[#f1e6df] to-[#e9e4f4] px-10 py-12 xl:px-14">
+          <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-[28px] bg-[#eeeae6] px-10 py-12 xl:px-14">
             <RingsMark size={420} className="absolute -right-24 -bottom-28 opacity-[0.06]" />
             <div className="relative">{aside}</div>
           </div>

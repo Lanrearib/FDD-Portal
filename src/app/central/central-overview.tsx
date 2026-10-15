@@ -115,7 +115,7 @@ export function CentralOverview() {
 
         {pending.length > 0 && (
           <Card className="mt-7 overflow-hidden ring-bad/30">
-            <div className="flex flex-wrap items-center gap-3 border-b border-line/80 bg-gradient-to-r from-bad-soft/70 to-transparent px-5 py-3 sm:px-6">
+            <div className="flex flex-wrap items-center gap-3 border-b border-line/80 bg-bad-soft/50 px-5 py-3 sm:px-6">
               <TriangleAlert className="size-4 text-bad" aria-hidden />
               <p className="flex-1 text-[14px] font-medium">Tema Zone has no counsellor assigned</p>
               <ButtonLink href="/central/counsellors" size="sm" variant="secondary">

@@ -142,7 +142,7 @@ function SidebarContent({
       </nav>
 
       <div className="mt-auto pt-8">
-        <div className="rounded-[20px] bg-gradient-to-br from-[#b9bec6] to-[#a7adb7] p-3 text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]">
+        <div className="rounded-[20px] bg-[#aeb3bc] p-3 text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]">
           <div className="flex items-center gap-3 px-1 pt-1">
             <Avatar name={user.name} size={38} className="ring-white/70" />
             <div className="min-w-0">

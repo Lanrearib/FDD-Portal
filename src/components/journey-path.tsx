@@ -125,7 +125,7 @@ export function JourneyPath({
                     stage.state === "done" && nextDone
                       ? "bg-ink"
                       : stage.state === "done"
-                        ? "bg-gradient-to-b from-ink to-line-strong"
+                        ? "bg-line-strong"
                         : "border-l border-dashed border-line-strong",
                   )}
                 />

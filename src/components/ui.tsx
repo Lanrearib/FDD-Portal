@@ -125,14 +125,7 @@ export function Card({
 
 /* ---------- Avatar ---------- */
 
-const avatarTints = [
-  "from-[#f6c3ad] to-[#ee9677]",
-  "from-[#d7cdf6] to-[#ab9ce3]",
-  "from-[#cfe3d8] to-[#86b9a0]",
-  "from-[#f3dcb3] to-[#d9a75a]",
-  "from-[#c9d6f2] to-[#8aa3dc]",
-];
-
+/** Profile photo. Every person resolves to a photo (see src/lib/people.ts). */
 export function Avatar({
   name,
   size = 36,
@@ -142,44 +135,17 @@ export function Avatar({
   size?: number;
   className?: string;
 }) {
-  const photo = photoFor(name);
-  if (photo) {
-    return (
-      <Image
-        src={photo}
-        alt=""
-        width={size}
-        height={size}
-        sizes={`${size}px`}
-        // Large avatars sit in page headers, above the fold.
-        loading={size >= 56 ? "eager" : "lazy"}
-        className={clsx(
-          "inline-block shrink-0 rounded-full bg-sunken object-cover ring-2 ring-surface",
-          className,
-        )}
-        style={{ width: size, height: size }}
-      />
-    );
-  }
-  const initials = name
-    .replace(/^(Pastor|Pst\.|Bro\.|Sis\.|Dr\.|Mrs\.|Mr\.)\s+/i, "")
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((p) => p[0])
-    .join("")
-    .toUpperCase();
-  const tint = avatarTints[[...name].reduce((a, c) => a + c.charCodeAt(0), 0) % avatarTints.length];
   return (
-    <span
-      aria-hidden
-      style={{ width: size, height: size, fontSize: Math.round(size * 0.36) }}
-      className={clsx(
-        "inline-flex shrink-0 items-center justify-center rounded-full bg-gradient-to-br font-semibold text-ink/80 ring-2 ring-surface",
-        tint,
-        className,
-      )}
-    >
-      {initials}
-    </span>
+    <Image
+      src={photoFor(name)}
+      alt=""
+      width={size}
+      height={size}
+      sizes={`${size}px`}
+      // Large avatars sit in page headers, above the fold.
+      loading={size >= 56 ? "eager" : "lazy"}
+      className={clsx("inline-block shrink-0 rounded-full bg-sunken object-cover ring-2 ring-surface", className)}
+      style={{ width: size, height: size }}
+    />
   );
 }
