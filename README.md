@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Family Development Department Portal
 
-## Getting Started
+A front-end prototype of the church’s Family Development portal, built from the PRD (v1.1): the
+marriage process for brothers and sisters, the Pastor’s introduction link, the counsellor workspace,
+central administration, and counselling and bereavement requests.
 
-First, run the development server:
+**This is front end only.** There is no server, database or real authentication. Screens run on
+typed mock data shaped like the PRD’s data entities (`src/lib/types.ts`), so a backend can replace it.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Use the **compass button** (bottom corner) to jump to any screen or role.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | How |
+|---|---|
+| Any verification code | `246810` |
+| Sign in | Any email and password |
+| Switch candidate | `/portal/as/new`, `tunde`, `daniel`, `zainab` or `kunle` |
+| Pastor link | `/assess/demo`, plus `submitted`, `expired` and `replaced` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Roles and where to find them
 
-## Learn More
+| Role | Start at | Highlights |
+|---|---|---|
+| Candidate | `/portal` | Journey tracker, ID and consent uploads, booking, sharing intention, responding, new proposals |
+| Pastor | `/assess/demo` | Email code, questionnaire, declaration; no account needed |
+| Zonal counsellor | `/staff` | Case view for every stage, reminders, holds, escalation, proposal cases, appointments, messages |
+| Central counsellor | `/central` | Unassigned cases, escalations, Zone coverage, bulk upload, Pastor directory, settings, audit log |
+| Church leadership | `/leadership` | Totals only, no names |
 
-To learn more about Next.js, take a look at the following resources:
+## Checks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run typecheck   # TypeScript
+npm run lint        # ESLint
+npm test            # Playwright: 54 end-to-end tests against a production build on port 3100
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The first `npm test` needs a browser: `npx playwright install chromium`.
 
-## Deploy on Vercel
+## Project layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/app/            Routes: public site, /portal, /assess, /staff, /central, /leadership
+src/components/     Shared UI: shells, form kit, journey path, charts, modal, toast
+src/lib/            Mock data, reference data (Areas, Zones, Pastors), domain types
+e2e/                Playwright tests
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What the backend needs to provide
+
+- Sessions and roles (candidate, Pastor link, counsellor, central counsellor, administrator, leadership)
+  with Area/Zone scoping enforced on the server, not just in the interface.
+- Workflow events from which journey stages are derived (PRD §6.4). The prototype’s actions only
+  update the page you are on.
+- Email, and optionally SMS, delivery for codes, links, reminders and templates; document storage; the audit log.
+
+## Decisions still open (PRD §17)
+
+These are shown with sensible defaults and should be confirmed by the church: the identity-check method,
+whether Pastors must enter an email code, what happens on “Unable to confirm”, how candidates are linked
+(the prototype uses a proposal code), what carries into a new proposal, retention periods and the
+privacy notice wording.

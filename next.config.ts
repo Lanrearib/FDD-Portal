@@ -1,9 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  images: {
+    // Demo profile photos (see src/lib/people.ts). Pinned to our exact crop params.
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/photo-*",
+        search: "?fit=crop&crop=faces&w=256&h=256",
+      },
+    ],
+  },
   turbopack: {
     rules: {
       "*.css": {
